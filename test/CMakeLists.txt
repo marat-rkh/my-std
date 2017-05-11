@@ -1,3 +1,3 @@
-# set(TEST_SRC some.cpp)
-# add_executable(some.test ${TEST_SRC})
-# target_link_libraries(some.test gtest_main my-std)
+set(TEST_SRC shared_ptr_tests.cpp)
+add_executable(shared_ptr.tests ${TEST_SRC})
+target_link_libraries(shared_ptr.tests gtest_main my-std)
