@@ -119,6 +119,9 @@ private:
     }
 };
 
-// TODO implement make_shared
+template<typename T, typename... A>
+inline SharedPtr<T> MakeShared(A&&... args) {
+    return SharedPtr<T>(new T(std::forward<A>(args)...));
+}
 
 #endif

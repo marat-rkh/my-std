@@ -1,6 +1,9 @@
 #include "gtest/gtest.h"
 #include "shared_ptr.h"
 
+#include <string>
+using std::string;
+
 TEST(shared_ptr, should_be_created_null) {
     SharedPtr<int> sp;
     ASSERT_FALSE(sp);
@@ -134,6 +137,13 @@ TEST(shared_ptr, should_be_reset) {
     ASSERT_EQ(delete_count, 1);
     sp.reset(nullptr);
     ASSERT_EQ(delete_count, 3);
+}
+
+TEST(shared_ptr, should_be_created_by_MakeShared) {
+    SharedPtr<string> sp = MakeShared<string>(3, 'c');
+    ASSERT_TRUE(sp);
+    ASSERT_EQ(*sp, string("ccc"));
+    ASSERT_EQ(sp.use_count(), 1L);
 }
 
 int main(int argc, char *argv[]) {
